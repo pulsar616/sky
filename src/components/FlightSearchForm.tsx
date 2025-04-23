@@ -11,13 +11,8 @@ import { format } from "date-fns";
 import { CalendarIcon, Plane } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Airport {
-  code: string;
-  name: string;
-  city: string;
-}
-
-const popularAirports: Airport[] = [
+// Expanded international airports for truly global directions
+const popularAirports = [
   { code: "JFK", name: "John F. Kennedy International", city: "New York" },
   { code: "LHR", name: "Heathrow Airport", city: "London" },
   { code: "CDG", name: "Charles de Gaulle Airport", city: "Paris" },
@@ -26,6 +21,32 @@ const popularAirports: Airport[] = [
   { code: "SIN", name: "Changi Airport", city: "Singapore" },
   { code: "HND", name: "Haneda Airport", city: "Tokyo" },
   { code: "SYD", name: "Sydney Airport", city: "Sydney" },
+  { code: "HKG", name: "Hong Kong International", city: "Hong Kong" },
+  { code: "FRA", name: "Frankfurt Airport", city: "Frankfurt" },
+  { code: "AMS", name: "Amsterdam Schiphol", city: "Amsterdam" },
+  { code: "ORD", name: "O'Hare International", city: "Chicago" },
+  { code: "ICN", name: "Incheon International", city: "Seoul" },
+  { code: "MIA", name: "Miami International", city: "Miami" },
+  { code: "GRU", name: "São Paulo–Guarulhos", city: "São Paulo" },
+  { code: "MAD", name: "Adolfo Suárez Madrid–Barajas", city: "Madrid" },
+  { code: "BCN", name: "Barcelona Airport", city: "Barcelona" },
+  { code: "JNB", name: "O.R. Tambo International", city: "Johannesburg" },
+  { code: "YYZ", name: "Toronto Pearson", city: "Toronto" },
+  { code: "DOH", name: "Hamad International", city: "Doha" },
+  { code: "MUC", name: "Munich Airport", city: "Munich" },
+  { code: "MEL", name: "Melbourne Airport", city: "Melbourne" },
+  { code: "BKK", name: "Suvarnabhumi Airport", city: "Bangkok" },
+  { code: "SFO", name: "San Francisco International", city: "San Francisco" },
+  { code: "ZRH", name: "Zurich Airport", city: "Zurich" },
+  { code: "VIE", name: "Vienna International", city: "Vienna" },
+  { code: "DEL", name: "Indira Gandhi International", city: "Delhi" },
+  { code: "MEX", name: "Benito Juárez Int’l", city: "Mexico City" },
+  { code: "IST", name: "Istanbul Airport", city: "Istanbul" },
+  { code: "BOM", name: "Chhatrapati Shivaji Intl", city: "Mumbai" },
+  { code: "CPH", name: "Copenhagen Airport", city: "Copenhagen" },
+  { code: "DME", name: "Domodedovo Intl", city: "Moscow" },
+  { code: "CAI", name: "Cairo International", city: "Cairo" },
+  // Add more as needed for an even bigger network...
 ];
 
 const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
@@ -38,7 +59,7 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const searchData = {
       from: fromAirport,
       to: toAirport,
@@ -47,61 +68,61 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
       passengers: parseInt(passengers),
       cabinClass
     };
-    
+
     onSearch(searchData);
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg max-w-5xl mx-auto -mt-16 z-10 relative">
-      <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-6 text-luxury-DEFAULT">Find Your Perfect Flight</h2>
-        
+    <div className="bg-white/60 glass rounded-3xl shadow-xl max-w-5xl mx-auto -mt-20 z-20 relative border border-luxury-gold/50 backdrop-blur-lg">
+      <div className="p-8 md:p-10">
+        <h2 className="text-3xl font-playfair font-bold mb-7 text-luxury-DEFAULT tracking-tight bg-gradient-to-br from-luxury-DEFAULT via-luxury-gold to-luxury-light bg-clip-text text-transparent">
+          Find Your Perfect Flight
+        </h2>
+
         <form onSubmit={handleSearch}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-7">
             {/* From Airport */}
-            <div className="col-span-1 md:col-span-1">
-              <Label htmlFor="fromAirport">From</Label>
+            <div className="col-span-1">
+              <Label htmlFor="fromAirport" className="text-luxury-DEFAULT font-semibold">From</Label>
               <Select value={fromAirport} onValueChange={setFromAirport}>
-                <SelectTrigger id="fromAirport">
+                <SelectTrigger id="fromAirport" className="glass">
                   <SelectValue placeholder="Select airport" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white/95 shadow-xl z-50 max-h-56 overflow-y-auto">
                   {popularAirports.map((airport) => (
                     <SelectItem key={airport.code} value={airport.code}>
-                      {airport.city} ({airport.code})
+                      {airport.city} ({airport.code}) — {airport.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
-            
             {/* To Airport */}
-            <div className="col-span-1 md:col-span-1">
-              <Label htmlFor="toAirport">To</Label>
+            <div className="col-span-1">
+              <Label htmlFor="toAirport" className="text-luxury-DEFAULT font-semibold">To</Label>
               <Select value={toAirport} onValueChange={setToAirport}>
-                <SelectTrigger id="toAirport">
+                <SelectTrigger id="toAirport" className="glass">
                   <SelectValue placeholder="Select airport" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white/95 shadow-xl z-50 max-h-56 overflow-y-auto">
                   {popularAirports.map((airport) => (
                     <SelectItem key={airport.code} value={airport.code}>
-                      {airport.city} ({airport.code})
+                      {airport.city} ({airport.code}) — {airport.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
-            
             {/* Depart Date */}
-            <div className="col-span-1 md:col-span-1">
-              <Label htmlFor="departDate">Depart</Label>
+            <div className="col-span-1">
+              <Label htmlFor="departDate" className="text-luxury-DEFAULT font-semibold">Depart</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
                     id="departDate"
                     className={cn(
-                      "w-full justify-start text-left font-normal",
+                      "w-full justify-start text-left font-normal glass",
                       !departDate && "text-muted-foreground"
                     )}
                   >
@@ -120,17 +141,16 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
                 </PopoverContent>
               </Popover>
             </div>
-            
             {/* Return Date */}
-            <div className="col-span-1 md:col-span-1">
-              <Label htmlFor="returnDate">Return</Label>
+            <div className="col-span-1">
+              <Label htmlFor="returnDate" className="text-luxury-DEFAULT font-semibold">Return</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
                     id="returnDate"
                     className={cn(
-                      "w-full justify-start text-left font-normal",
+                      "w-full justify-start text-left font-normal glass",
                       !returnDate && "text-muted-foreground"
                     )}
                   >
@@ -149,15 +169,14 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
                 </PopoverContent>
               </Popover>
             </div>
-            
             {/* Passengers */}
-            <div className="col-span-1 md:col-span-1">
-              <Label htmlFor="passengers">Passengers</Label>
+            <div className="col-span-1">
+              <Label htmlFor="passengers" className="text-luxury-DEFAULT font-semibold">Passengers</Label>
               <Select value={passengers} onValueChange={setPassengers}>
-                <SelectTrigger id="passengers">
+                <SelectTrigger id="passengers" className="glass">
                   <SelectValue placeholder="Passengers" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white/95 shadow-xl z-50 max-h-56 overflow-y-auto">
                   {[1, 2, 3, 4, 5, 6].map((num) => (
                     <SelectItem key={num} value={num.toString()}>
                       {num} {num === 1 ? "Passenger" : "Passengers"}
@@ -167,12 +186,11 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
               </Select>
             </div>
           </div>
-          
           {/* Cabin Class */}
-          <div className="mt-6">
-            <Label>Cabin Class</Label>
-            <RadioGroup 
-              className="flex gap-6 mt-2" 
+          <div className="mt-8">
+            <Label className="text-luxury-DEFAULT font-semibold">Cabin Class</Label>
+            <RadioGroup
+              className="flex gap-7 mt-2"
               defaultValue="business"
               value={cabinClass}
               onValueChange={setCabinClass}
@@ -187,10 +205,9 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
               </div>
             </RadioGroup>
           </div>
-          
-          <Button 
-            type="submit" 
-            className="w-full mt-6 bg-luxury-gold hover:bg-opacity-90 text-black"
+          <Button
+            type="submit"
+            className="w-full mt-8 bg-gradient-to-r from-luxury-gold via-luxury-light to-luxury-DEFAULT text-black shadow-lg font-semibold tracking-wide transition-all duration-200 hover:brightness-110 hover:scale-105"
             size="lg"
           >
             <Plane className="mr-2 h-5 w-5" />
@@ -203,3 +220,4 @@ const FlightSearchForm = ({ onSearch }: { onSearch: (data: any) => void }) => {
 };
 
 export default FlightSearchForm;
+
