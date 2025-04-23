@@ -4,11 +4,11 @@ import { PhoneIcon } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="border-b border-luxury-light/20 bg-gradient-to-br from-white via-luxury-cream/50 to-luxury-light/10 backdrop-blur-md shadow-sm">
+    <header className="border-b border-luxury-light/20 bg-gradient-to-br from-white via-luxury-cream/50 to-luxury-light/10 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-luxury-DEFAULT">
-            Sky<span className="text-luxury-gold">High</span>
+          <h1 className="text-2xl font-bold text-luxury-DEFAULT bg-gradient-to-br from-luxury-DEFAULT to-luxury-gold/90 bg-clip-text text-transparent">
+            Sky<span className="text-luxury-gold font-serif italic">High</span>
           </h1>
         </div>
         <nav className="hidden md:flex space-x-6">

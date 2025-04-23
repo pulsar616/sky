@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,23 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-sm;
+  }
+  
+  .luxury-gradient-text {
+    @apply bg-gradient-to-br from-luxury-DEFAULT to-luxury-gold bg-clip-text text-transparent;
+  }
+  
+  .luxury-card {
+    @apply bg-white/90 backdrop-blur-sm border border-luxury-gold/20 shadow-md rounded-lg p-6;
+  }
+  
+  .luxury-button {
+    @apply bg-gradient-to-r from-luxury-gold to-luxury-light text-luxury-DEFAULT font-medium px-4 py-2 rounded-md hover:brightness-110 transition-all;
   }
 }
