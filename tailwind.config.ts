@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				luxury: {
+					DEFAULT: '#0A2342', // deep navy blue
+					light: '#235789', // lighter blue
+					gold: '#D6AD60', // soft gold
+					cream: '#F8F4E3', // light cream
+					accent: '#8B5CF6', // accent purple
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
