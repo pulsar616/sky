@@ -4,7 +4,7 @@ import { PhoneIcon } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="border-b border-luxury-light/20 bg-gradient-to-br from-white via-luxury-cream/50 to-luxury-light/10 backdrop-blur-md shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-luxury-DEFAULT">
@@ -12,25 +12,28 @@ const Header = () => {
           </h1>
         </div>
         <nav className="hidden md:flex space-x-6">
-          <a href="#" className="text-gray-700 hover:text-luxury-gold transition-colors duration-200">
+          <a href="#" className="text-luxury-DEFAULT hover:text-luxury-gold transition-colors duration-200 font-medium">
             Home
           </a>
-          <a href="#" className="text-gray-700 hover:text-luxury-gold transition-colors duration-200">
+          <a href="#" className="text-luxury-DEFAULT hover:text-luxury-gold transition-colors duration-200 font-medium">
             First Class
           </a>
-          <a href="#" className="text-gray-700 hover:text-luxury-gold transition-colors duration-200">
+          <a href="#" className="text-luxury-DEFAULT hover:text-luxury-gold transition-colors duration-200 font-medium">
             Business Class
           </a>
-          <a href="#" className="text-gray-700 hover:text-luxury-gold transition-colors duration-200">
+          <a href="#" className="text-luxury-DEFAULT hover:text-luxury-gold transition-colors duration-200 font-medium">
             Destinations
           </a>
-          <a href="#" className="text-gray-700 hover:text-luxury-gold transition-colors duration-200">
+          <a href="#" className="text-luxury-DEFAULT hover:text-luxury-gold transition-colors duration-200 font-medium">
             About Us
           </a>
         </nav>
         <div className="flex items-center">
-          <Button variant="ghost" className="flex items-center gap-1">
-            <PhoneIcon className="h-4 w-4" />
+          <Button 
+            variant="outline" 
+            className="border-luxury-gold/50 text-luxury-DEFAULT hover:bg-luxury-gold/10 hover:border-luxury-gold transition-all duration-300 group"
+          >
+            <PhoneIcon className="h-4 w-4 mr-2 text-luxury-gold group-hover:rotate-12 transition-transform" />
             <span className="hidden sm:inline">+1 800-SKY-HIGH</span>
           </Button>
         </div>
